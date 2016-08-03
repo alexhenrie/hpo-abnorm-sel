@@ -1,0 +1,33 @@
+{
+  "name": "hpo-abnorm-sel",
+  "version": "1.0.0",
+  "description": "HPO Abnormalities Selector",
+  "main": "hpo-abnorm-sel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eilbecklab/hpo-abnorm-sel.git"
+  },
+  "author": "Alex Henrie for the University of Utah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eilbecklab/hpo-abnorm-sel/issues"
+  },
+  "homepage": "https://github.com/eilbecklab/hpo-abnorm-sel#readme",
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.23.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "csso-loader": "^0.2.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
+  }
+}

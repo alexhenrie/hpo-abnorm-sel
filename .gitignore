@@ -1,0 +1,5 @@
+debug/
+node_modules/
+release/
+abnormalities.js
+hp.obo

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>HPO abnormality selector demo</title>
+
+        <script src="hpo-abnorm-sel.js"></script>
+    </head>
+    <body>
+        <div id="selector"></div>
+        <script>
+            hpoAbnormSel(document.getElementById('selector'), function(selections) {
+                var positivePhenotypes = selections.filter(function(selection) {
+                    return selection.value == true;
+                }).map(function(selection) {
+                    return selection.code;
+                });
+                var negativePhenotypes = selections.filter(function(selection) {
+                    return selection.value == false;
+                }).map(function(selection) {
+                    return selection.code;
+                });
+                alert(
+                    'Positive phenotypes: ' + positivePhenotypes + '\n' +
+                    'Negative phenotypes: ' + negativePhenotypes + '\n'
+                );
+            });
+        </script>
+    </body>
+</html>
