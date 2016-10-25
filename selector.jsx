@@ -50,6 +50,12 @@ module.exports = React.createClass({
                             </tr>
                         </tbody>
                     </table>
+                    <TermBox
+                        childrenOnly={true}
+                        code="HP:0000118"
+                        getSelection={this.getSelection}
+                        setSelection={this.setSelection}
+                    />
                 </div>
                 <div className="cart">
                     <div className="cart-header">Current selection</div>

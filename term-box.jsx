@@ -13,11 +13,12 @@ var TermBox = React.createClass({
 
         return {
             childCodes: childCodes,
+            expanded: this.props.childrenOnly,
         };
     },
 
     render: function() {
-        var termBoxClass = 'term';
+        var termBoxClass = this.props.childrenOnly ? '' : 'term';
         if (this.state.childCodes && this.state.childCodes.length) {
             if (this.state.expanded) {
                 termBoxClass += ' expanded';
@@ -27,44 +28,49 @@ var TermBox = React.createClass({
         }
         return (
             <div className={termBoxClass}>
-                <div className="self">
-                    <span className="buttons">
-                        <span className="expander" onClick={this.expandOrCollapse}/>
-                        <input
-                            checked={this.props.getSelection(this.props.code) == undefined}
-                            id={this.props.name + '-na'}
-                            name={this.props.name}
-                            onChange={this.setSelection.bind(null, undefined)}
-                            type="radio"
-                        />
-                        <label className="na" htmlFor={this.props.name + '-na'}>NA</label>
-                        <input
-                            checked={this.props.getSelection(this.props.code) == true}
-                            id={this.props.name + '-y'}
-                            name={this.props.name}
-                            onChange={this.setSelection.bind(null, true)}
-                            type="radio"
-                        />
-                        <label className="y" htmlFor={this.props.name + '-y'}>Y</label>
-                        <input
-                            checked={this.props.getSelection(this.props.code) == false}
-                            id={this.props.name + '-n'}
-                            name={this.props.name}
-                            onChange={this.setSelection.bind(null, false)}
-                            type="radio"
-                        />
-                        <label className="n" htmlFor={this.props.name + '-n'}>N</label>
-                    </span>
-                    <span className="desc">
-                        {abnormalities[this.props.code].name}
-                        <span className="info-button" onClick={this.popUpInfo}/>
-                    </span>
-                </div>
+                {
+                    this.props.childrenOnly ? null : (
+                        <div className="self">
+                            <span className="buttons">
+                                <span className="expander" onClick={this.expandOrCollapse}/>
+                                <input
+                                    checked={this.props.getSelection(this.props.code) == undefined}
+                                    id={this.props.name + '-na'}
+                                    name={this.props.name}
+                                    onChange={this.setSelection.bind(null, undefined)}
+                                    type="radio"
+                                />
+                                <label className="na" htmlFor={this.props.name + '-na'}>NA</label>
+                                <input
+                                    checked={this.props.getSelection(this.props.code) == true}
+                                    id={this.props.name + '-y'}
+                                    name={this.props.name}
+                                    onChange={this.setSelection.bind(null, true)}
+                                    type="radio"
+                                />
+                                <label className="y" htmlFor={this.props.name + '-y'}>Y</label>
+                                <input
+                                    checked={this.props.getSelection(this.props.code) == false}
+                                    id={this.props.name + '-n'}
+                                    name={this.props.name}
+                                    onChange={this.setSelection.bind(null, false)}
+                                    type="radio"
+                                />
+                                <label className="n" htmlFor={this.props.name + '-n'}>N</label>
+                            </span>
+                            <span className="desc">
+                                {abnormalities[this.props.code].name}
+                                <span className="info-button" onClick={this.popUpInfo}/>
+                            </span>
+                        </div>
+                    )
+                }
                 {
                     this.state.expanded ? this.state.childCodes.map(function(code) {
                         return (
                             <TermBox
                                 {...this.props}
+                                childrenOnly={false}
                                 code={code}
                                 key={this.props.name + '-' + code}
                                 name={this.props.name + '-' + code}
