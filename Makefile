@@ -31,5 +31,5 @@ node_modules:
 $(BUILD_TYPE)/demo.html: demo.html
 	cp demo.html $(BUILD_TYPE)
 
-$(BUILD_TYPE)/hpo-abnorm-sel.js: node_modules *.js *.jsx *.css
+$(BUILD_TYPE)/hpo-abnorm-sel.js: node_modules abnormalities.js *.js *.jsx *.css
 	BUILD_TYPE=$(BUILD_TYPE) ./node_modules/webpack/bin/webpack.js $(WEBPACKFLAGS)
